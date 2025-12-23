@@ -160,6 +160,6 @@ Projet réalisé dans le cadre d’un cours de Data Management, visant à démon
 
 ## 👤 Auteurs  
 
-Edouard Lacroix  
+Edouard LACROIX  
 Bernard DRUI  
 Oussama GUEDRI  
