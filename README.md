@@ -39,12 +39,38 @@ Les données utilisées proviennent exclusivement de sources publiques officiell
 ## 🧱 Structure du projet
 
 ```text
-├── Data_Management__Projet_Notebook.ipynb # Notebook d’analyse et de préparation des données
-├── Data_Management_Projet_Streamlit.py # Application Streamlit finale
-├── OUTPUT/
-│ └── 04_DF_Union_Macro_DVF.csv # Dataset consolidé (macro + DVF)
+├── Data_Management__Projet_Notebook.ipynb
+├── Data_Management_Projet_Streamlit.py
+│
 ├── INPUT/
-│ └── ARTICLES_PRESSE/ # Corpus textuel pour le text mining
+│   ├── ARTICLES_PRESSE/
+│   │   └── *.md / *.txt                
+│   │
+│   ├── DATADV/
+│   │   ├── splitDVF.py                   
+│   │   ├── ValeursFoncieres-2020-S2.txt
+│   │   ├── ValeursFoncieres-2021.txt
+│   │   ├── ValeursFoncieres-2022.txt
+│   │   ├── ValeursFoncieres-2023.txt
+│   │   ├── ValeursFoncieres-2024.txt
+│   │   └── ValeursFoncieres-2025-S1.txt
+│   │
+│   ├── Dataprojetglobalhorsdvf.xlsx      
+│   └── tauxinteretsBdFpourcomp_1990_2025.xlsx
+│
+├── OUTPUT/
+│   ├── 01_Taux_Interet_BdF_Annuel.csv
+│   ├── 02_DF_Macro_National.csv
+│   ├── 03_DVF_IDF_Appartements.csv
+│   ├── 04_DF_Union_Macro_DVF.csv         
+│   │
+│   ├── G1_France_Prix_Revenu_IPC.png
+│   ├── G2_Indices_Prix_Loyers.png
+│   ├── G3_Dette_Duree_Transactions.png
+│   ├── G4_Prix_m2_Departements.png
+│   ├── G5_Top10_Communes_Cheres.png
+│   └── G6_Accessibilite_Immobiliere.png
+│
 └── README.md
 ```
 
@@ -115,9 +141,9 @@ Les données utilisées proviennent exclusivement de sources publiques officiell
 ```bash
 pip install streamlit pandas numpy plotly matplotlib nltk wordcloud
 ```
-2. Placer le fichier de données :
+2. Placer le fichier de données nettoyé :
 
-OUTPUT/04_DF_Union_Macro_DVF.csv
+OUTPUT/04_DF_Union_Macro_DVF.csv (voir OUTPUT)
 
 3. Lancer l’application :
 
@@ -131,3 +157,9 @@ Projet réalisé dans le cadre d’un cours de Data Management, visant à démon
 - Construire des indicateurs économiques pertinents  
 - Développer une application analytique professionnelle  
 - Rendre les résultats accessibles à un public non technique  
+
+## 👤 Auteurs  
+
+Edouard Lacroix  
+Bernard DRUI  
+Oussama GUEDRI  
