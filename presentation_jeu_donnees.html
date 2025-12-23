@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Présentation du Jeu de Données - Observatoire Immobilier</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, #0f172a 0%, #131c2e 100%);
+            color: #FFFFFF;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+        }
+        
+        h1 {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+        
+        h2 {
+            color: #38bdf8;
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f97316;
+            border-left: 5px solid #f97316;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #22c55e;
+            font-size: 1.4rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 3px solid #22c55e;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            color: #cbd5e1;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        strong {
+            color: #f97316;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: #1e293b;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        thead {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        }
+        
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: white;
+            border-bottom: 2px solid #334155;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #334155;
+            color: #cbd5e1;
+        }
+        
+        tr:hover {
+            background: #334155;
+            transition: background 0.3s ease;
+        }
+        
+        code {
+            background: #334155;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #38bdf8;
+            font-family: 'Courier New', monospace;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #334155;
+            margin: 40px 0;
+        }
+        
+        .highlight {
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #f97316;
+            margin: 20px 0;
+        }
+        
+        .metric-badge {
+            display: inline-block;
+            background: #22c55e;
+            color: #0f172a;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 5px;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #334155;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+                padding: 20px;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PRÉSENTATION DU JEU DE DONNÉES</h1>
+<h2>Observatoire Stratégique de l'Immobilier Français</h2>
+<hr />
+<h2>1. SOURCE ET ORIGINE DES DONNÉES</h2>
+<p>Le projet repose sur <strong>trois sources de données publiques officielles</strong> :</p>
+<h3>1.1 Données Macroéconomiques France (INSEE)</h3>
+<ul>
+<li><strong>Source</strong> : Institut National de la Statistique et des Études Économiques</li>
+<li><strong>Format</strong> : Fichier Excel (<code>Dataprojetglobalhorsdvf.xlsx</code>)</li>
+<li><strong>Fiabilité</strong> : Données officielles, mises à jour régulièrement</li>
+<li><strong>Périmètre géographique</strong> : France métropolitaine</li>
+</ul>
+<h3>1.2 Taux d'Intérêt (Banque de France)</h3>
+<ul>
+<li><strong>Source</strong> : Banque de France - Direction des statistiques monétaires</li>
+<li><strong>Format</strong> : Fichier Excel (<code>tauxintérêtsBdFpour compléter années 2020-25.xlsx</code>)</li>
+<li><strong>Type de taux</strong> : Taux d'intérêt immobiliers long terme</li>
+<li><strong>Utilisation</strong> : Complète les données macroéconomiques pour la période 2020-2025</li>
+</ul>
+<h3>1.3 Demande de Valeurs Foncières - DVF (DGFiP)</h3>
+<ul>
+<li><strong>Source</strong> : Direction Générale des Finances Publiques</li>
+<li><strong>Format</strong> : Fichiers TXT multiples (séparateur "|", encodage UTF-8)</li>
+<li><strong>Contenu</strong> : Transactions immobilières enregistrées par les notaires</li>
+<li><strong>Périmètre géographique</strong> : 8 départements d'Île-de-France (75, 77, 78, 91, 92, 93, 94, 95)</li>
+<li><strong>Type d'opérations</strong> : Ventes d'appartements uniquement (filtre appliqué)</li>
+</ul>
+<hr />
+<h2>2. VOLUMÉTRIE ET DIMENSIONS</h2>
+<h3>2.1 Données Macroéconomiques France</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Indicateur</strong></th>
+<th><strong>Valeur</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Période couverte</strong></td>
+<td>1990 - 2025 (35 ans)</td>
+</tr>
+<tr>
+<td><strong>Nombre d'observations</strong></td>
+<td>35 lignes (une par année)</td>
+</tr>
+<tr>
+<td><strong>Nombre de variables</strong></td>
+<td>15 colonnes initiales</td>
+</tr>
+<tr>
+<td><strong>Variables enrichies générées</strong></td>
+<td>+20 indicateurs calculés</td>
+</tr>
+<tr>
+<td><strong>Périmètre</strong></td>
+<td>National (France métropolitaine)</td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 Données DVF Île-de-France</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Indicateur</strong></th>
+<th><strong>Valeur</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Période couverte</strong></td>
+<td>Variable selon disponibilité DVF (typiquement 2020-2025)</td>
+</tr>
+<tr>
+<td><strong>Nombre d'observations brutes</strong></td>
+<td>Plusieurs millions de transactions</td>
+</tr>
+<tr>
+<td><strong>Observations après filtrage</strong></td>
+<td>Conservées : ventes d'appartements en IdF uniquement</td>
+</tr>
+<tr>
+<td><strong>Taux de filtrage outliers</strong></td>
+<td>~2-5% de transactions extrêmes supprimées (méthode IQR)</td>
+</tr>
+<tr>
+<td><strong>Départements</strong></td>
+<td>8 départements franciliens</td>
+</tr>
+<tr>
+<td><strong>Granularité géographique</strong></td>
+<td>Département, commune, code postal</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. DESCRIPTION DES VARIABLES</h2>
+<h3>3.1 Variables Macroéconomiques France (14 indicateurs principaux)</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Variable</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Unité</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Année</code></td>
+<td>Temporel</td>
+<td>Année</td>
+<td>Période d'observation (1990-2025)</td>
+</tr>
+<tr>
+<td><code>Prix_Logements_France</code></td>
+<td>Numérique</td>
+<td>Indice base 100</td>
+<td>Indice des prix des logements anciens - France</td>
+</tr>
+<tr>
+<td><code>Prix_Logements_Paris</code></td>
+<td>Numérique</td>
+<td>Indice base 100</td>
+<td>Indice des prix des logements anciens - Paris</td>
+</tr>
+<tr>
+<td><code>Loyers_Nationaux</code></td>
+<td>Numérique</td>
+<td>Indice base 100</td>
+<td>Indice des loyers (hors charges)</td>
+</tr>
+<tr>
+<td><code>Revenu_Median</code></td>
+<td>Numérique</td>
+<td>EUR</td>
+<td>Revenu disponible médian des ménages</td>
+</tr>
+<tr>
+<td><code>IPC</code></td>
+<td>Numérique</td>
+<td>Indice base 100</td>
+<td>Indice des Prix à la Consommation</td>
+</tr>
+<tr>
+<td><code>ICC</code></td>
+<td>Numérique</td>
+<td>Indice base 100</td>
+<td>Indice du Coût de la Construction</td>
+</tr>
+<tr>
+<td><code>PIB</code></td>
+<td>Numérique</td>
+<td>Milliards EUR</td>
+<td>Produit Intérieur Brut</td>
+</tr>
+<tr>
+<td><code>Dette_Immobiliere</code></td>
+<td>Numérique</td>
+<td>Milliards EUR</td>
+<td>Endettement immobilier des ménages</td>
+</tr>
+<tr>
+<td><code>Montant_Transaction</code></td>
+<td>Numérique</td>
+<td>EUR</td>
+<td>Montant moyen des transactions immobilières</td>
+</tr>
+<tr>
+<td><code>Duree_Pret_Mois</code></td>
+<td>Numérique</td>
+<td>Mois</td>
+<td>Durée moyenne des prêts immobiliers</td>
+</tr>
+<tr>
+<td><code>Salaire_Moyen</code></td>
+<td>Numérique</td>
+<td>EUR</td>
+<td>Salaire moyen annuel</td>
+</tr>
+<tr>
+<td><code>Nombre_Logements</code></td>
+<td>Numérique</td>
+<td>Milliers</td>
+<td>Stock de logements</td>
+</tr>
+<tr>
+<td><code>Taux_Chomage</code></td>
+<td>Numérique</td>
+<td>%</td>
+<td>Taux de chômage national</td>
+</tr>
+<tr>
+<td><code>Taux_Immobilier</code></td>
+<td>Numérique</td>
+<td>%</td>
+<td>Taux d'intérêt des crédits immobiliers (BdF)</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 Variables DVF Île-de-France (principales colonnes conservées)</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Variable</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Unité</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Date_mutation</code></td>
+<td>Temporel</td>
+<td>Date</td>
+<td>Date de la transaction</td>
+</tr>
+<tr>
+<td><code>Année</code></td>
+<td>Temporel</td>
+<td>Année</td>
+<td>Année de la transaction (extraite de Date_mutation)</td>
+</tr>
+<tr>
+<td><code>Nature_mutation</code></td>
+<td>Catégoriel</td>
+<td>Texte</td>
+<td>Type d'opération (filtre : "VENTE" uniquement)</td>
+</tr>
+<tr>
+<td><code>Type_local</code></td>
+<td>Catégoriel</td>
+<td>Texte</td>
+<td>Type de bien (filtre : "APPARTEMENT" uniquement)</td>
+</tr>
+<tr>
+<td><code>Valeur_fonciere</code></td>
+<td>Numérique</td>
+<td>EUR</td>
+<td>Prix de vente du bien</td>
+</tr>
+<tr>
+<td><code>Surface_reelle_bati</code></td>
+<td>Numérique</td>
+<td>m²</td>
+<td>Surface habitable</td>
+</tr>
+<tr>
+<td><code>Code_departement</code></td>
+<td>Catégoriel</td>
+<td>Code</td>
+<td>Département (75, 77, 78, 91, 92, 93, 94, 95)</td>
+</tr>
+<tr>
+<td><code>Nom_commune</code></td>
+<td>Catégoriel</td>
+<td>Texte</td>
+<td>Commune de la transaction</td>
+</tr>
+<tr>
+<td><code>Code_postal</code></td>
+<td>Catégoriel</td>
+<td>Code</td>
+<td>Code postal</td>
+</tr>
+<tr>
+<td><code>Prix_m2</code></td>
+<td>Numérique (calculé)</td>
+<td>EUR/m²</td>
+<td>Prix au mètre carré (Valeur / Surface)</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 Variables Enrichies Calculées</h3>
+<p><strong>Indicateurs d'accessibilité et de performance</strong> (générés automatiquement) :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Variable</strong></th>
+<th><strong>Formule</strong></th>
+<th><strong>Interprétation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ratio_PrixLog_Revenu</code></td>
+<td>Prix_Logements / Revenu</td>
+<td>Effort d'achat immobilier (&gt;100 = dégradation accessibilité)</td>
+</tr>
+<tr>
+<td><code>Ratio_Paris_France</code></td>
+<td>Prix_Paris / Prix_France</td>
+<td>Écart de valorisation Paris vs France</td>
+</tr>
+<tr>
+<td><code>Ratio_Prix_Loyers</code></td>
+<td>Prix / Loyers</td>
+<td>Inverse du rendement locatif brut</td>
+</tr>
+<tr>
+<td><code>Taux_Endettement_Immo</code></td>
+<td>Dette_Immo / Revenu</td>
+<td>Niveau d'endettement des ménages</td>
+</tr>
+<tr>
+<td><code>Evol_PrixLog_France_pct</code></td>
+<td>Δ Prix_Logements (%)</td>
+<td>Variation annuelle des prix immobiliers</td>
+</tr>
+<tr>
+<td><code>Evol_Revenu_pct</code></td>
+<td>Δ Revenu (%)</td>
+<td>Variation annuelle du pouvoir d'achat</td>
+</tr>
+<tr>
+<td><code>Evol_Dette_pct</code></td>
+<td>Δ Dette (%)</td>
+<td>Variation annuelle de l'endettement</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. QUALITÉ DES DONNÉES ET VALEURS MANQUANTES</h2>
+<h3>4.1 Données Macroéconomiques</h3>
+<p><strong>Traitement des valeurs manquantes</strong> :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Variable</strong></th>
+<th><strong>Taux de complétude</strong></th>
+<th><strong>Méthode de traitement</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Indicateurs principaux</td>
+<td>~95-100%</td>
+<td>Interpolation linéaire pour gaps mineurs</td>
+</tr>
+<tr>
+<td>Taux_Immobilier (2020-2025)</td>
+<td>Complété via BdF</td>
+<td>Fusion avec données Banque de France</td>
+</tr>
+<tr>
+<td>Dette_Immobiliere (années anciennes)</td>
+<td>~90%</td>
+<td>Conservé tel quel (pas d'interpolation artificielle)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Points de vigilance</strong> :
+- Les données les plus récentes (2024-2025) peuvent être des estimations provisoires (INSEE)
+- Certains indicateurs changent de base de calcul au fil du temps (détection automatique base 1 vs base 100)</p>
+<h3>4.2 Données DVF</h3>
+<p><strong>Filtrage et nettoyage appliqués</strong> :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Étape</strong></th>
+<th><strong>Critère</strong></th>
+<th><strong>Impact</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Filtrage géographique</td>
+<td>Départements IdF uniquement</td>
+<td>Conservation ~8-10% du volume national</td>
+</tr>
+<tr>
+<td>Filtrage typologique</td>
+<td>Ventes + Appartements</td>
+<td>Suppression maisons, terrains, locaux commerciaux</td>
+</tr>
+<tr>
+<td>Détection outliers</td>
+<td>Méthode IQR (percentiles 1%-99%)</td>
+<td>Suppression ~2-5% des transactions extrêmes</td>
+</tr>
+<tr>
+<td>Bornes réalistes</td>
+<td>500 €/m² &lt; Prix &lt; 25 000 €/m²</td>
+<td>Élimination erreurs de saisie</td>
+</tr>
+<tr>
+<td>Valeurs nulles</td>
+<td>Surface &gt; 0 et Valeur &gt; 0</td>
+<td>Suppression transactions incomplètes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Taux de valeurs manquantes après nettoyage</strong> :
+- <code>Prix_m2</code> : <strong>0%</strong> (calculé uniquement sur lignes complètes)
+- <code>Commune</code> : <strong>~0-2%</strong> (quelques transactions sans géolocalisation précise)
+- <code>Code_postal</code> : <strong>~0-2%</strong> (idem)</p>
+<hr />
+<h2>5. AUTRES ÉLÉMENTS DESCRIPTIFS PERTINENTS</h2>
+<h3>5.1 Caractéristiques Techniques</h3>
+<ul>
+<li><strong>Format de sortie principal</strong> : 15 DataFrames distincts générés par le pipeline ETL</li>
+<li><strong>Exports disponibles</strong> : CSV pour chaque DataFrame (répertoire <code>DATA_CLEAN2/</code>)</li>
+<li><strong>Granularité temporelle</strong> : Annuelle (macro) / Transactionnelle puis agrégée (DVF)</li>
+<li><strong>Granularité géographique</strong> : Nationale (macro) / Département + Commune (DVF)</li>
+</ul>
+<h3>5.2 Agrégations Disponibles</h3>
+<p>L'application génère automatiquement :</p>
+<table>
+<thead>
+<tr>
+<th><strong>Vue agrégée</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Utilisation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>df_macro_analyse</code></td>
+<td>Données France complètes (1990-2025)</td>
+<td>Analyses longue période</td>
+</tr>
+<tr>
+<td><code>df_macro_20</code></td>
+<td>Données France (20 dernières années)</td>
+<td>Focus récent</td>
+</tr>
+<tr>
+<td><code>df_agg_idf</code></td>
+<td>Prix médians IdF par année</td>
+<td>Évolution régionale</td>
+</tr>
+<tr>
+<td><code>df_agg_dept</code></td>
+<td>Prix médians par département et année</td>
+<td>Comparaisons départementales</td>
+</tr>
+<tr>
+<td><code>df_agg_commune</code></td>
+<td>Prix médians par commune et année</td>
+<td>Analyses micro-locales</td>
+</tr>
+<tr>
+<td><code>df_top10_communes</code></td>
+<td>Top 10 communes les plus chères par année</td>
+<td>Benchmark haut de gamme</td>
+</tr>
+<tr>
+<td><code>df_global_5</code></td>
+<td>Union macro + DVF (5 dernières années)</td>
+<td>Analyses croisées récentes</td>
+</tr>
+</tbody>
+</table>
+<h3>5.3 Cohérence et Validation</h3>
+<p><strong>Contrôles qualité implémentés</strong> :
+- ✅ Validation cohérence temporelle (années croissantes, pas de gaps)
+- ✅ Détection changements de base (indices base 1 vs base 100)
+- ✅ Normalisation codes départements (gestion variantes)
+- ✅ Gestion robuste des erreurs d'encodage
+- ✅ Traçabilité complète des transformations (logs détaillés)</p>
+<p><strong>Limites connues</strong> :
+- Données DVF disponibles à partir de 2014 seulement (historique limité)
+- Certaines petites communes ont peu de transactions (biais échantillon)
+- Prix au m² fortement influencés par typologie des biens (studio vs 5 pièces)</p>
+<hr />
+<h2>6. SYNTHÈSE DES INDICATEURS CLÉS</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Dimension</strong></th>
+<th><strong>Valeur</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Total sources de données</strong></td>
+<td>3 (INSEE + BdF + DVF)</td>
+</tr>
+<tr>
+<td><strong>Période macro</strong></td>
+<td>35 ans (1990-2025)</td>
+</tr>
+<tr>
+<td><strong>Période DVF</strong></td>
+<td>~10 ans (2014-2024)</td>
+</tr>
+<tr>
+<td><strong>Observations macro</strong></td>
+<td>35 années</td>
+</tr>
+<tr>
+<td><strong>Observations DVF brutes</strong></td>
+<td>Plusieurs millions de transactions</td>
+</tr>
+<tr>
+<td><strong>Variables macro initiales</strong></td>
+<td>14 indicateurs</td>
+</tr>
+<tr>
+<td><strong>Variables macro enrichies</strong></td>
+<td>+20 indicateurs calculés</td>
+</tr>
+<tr>
+<td><strong>Variables DVF principales</strong></td>
+<td>10 colonnes conservées</td>
+</tr>
+<tr>
+<td><strong>Départements IdF</strong></td>
+<td>8 départements</td>
+</tr>
+<tr>
+<td><strong>Taux de complétude global</strong></td>
+<td>&gt;95% après nettoyage</td>
+</tr>
+<tr>
+<td><strong>Outliers filtrés</strong></td>
+<td>2-5% des transactions DVF</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Document crée le</strong> : Décembre 2025<br />
+<strong>Application</strong> : Observatoire Stratégique de l'Immobilier Français<br />
+<strong>Version</strong> : 2.1</p>
+        
+        <div class="footer">
+            <p>📊• Observatoire Stratégique de l'Immobilier Français</p>
+            <p>© 2025 • Version 2.1</p>
+        </div>
+    </div>
+</body>
+</html>
