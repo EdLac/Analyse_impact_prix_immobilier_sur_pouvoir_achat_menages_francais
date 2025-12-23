@@ -1,0 +1,14 @@
+PROJET DATA MANAGEMENT & VISUALISATION 2025
+
+GROUPE :
+- Bernard DRUI
+- Oussama GUEDRI
+- Edouard LACROIX
+
+SOURCES DES DONNÉES :
+1. Demandes de Valeurs Foncières (DVF) : https://www.data.gouv.fr/fr/datasets/demandes-de-valeurs-foncieres/
+2. Données Macroéconomiques : Banque de France / INSEE
+
+INSTRUCTIONS DE LANCEMENT :
+1. Installez les librairies : pip install -r requirements.txt
+2. Lancez : streamlit run Data_Management_Projet_Streamlit.py
