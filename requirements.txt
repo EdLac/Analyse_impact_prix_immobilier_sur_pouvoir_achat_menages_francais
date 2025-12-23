@@ -1,0 +1,8 @@
+numpy == 1.26.4
+pandas == 2.2.2
+matplotlib == 3.9.2
+streamlit == 1.37.1
+plotly == 5.24.1
+nltk == 3.9.1
+wordcloud == 1.9.4
+openpy == 3.1.5
